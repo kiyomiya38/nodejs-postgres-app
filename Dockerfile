@@ -1,4 +1,4 @@
-FROM registry.access.redhat.com/ubi9/nodejs-20:1-52
+FROM registry.access.redhat.com/ubi9/nodejs-20:latest
 
 # アプリケーションコードをコピー
 WORKDIR /opt/app-root/src
