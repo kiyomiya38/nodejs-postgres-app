@@ -4,7 +4,6 @@ const { Pool } = require('pg');
 const app = express();
 const port = 8080;
 
-// PostgreSQL 接続設定（TLS 必須対応）
 const pool = new Pool({
   host: process.env.DB_HOST || 'localhost',
   database: process.env.DB_NAME || 'postgres',
@@ -12,7 +11,8 @@ const pool = new Pool({
   password: process.env.DB_PASSWORD || '',
   port: 5432,
   ssl: {
-    rejectUnauthorized: false  // 開発環境用：自己署名証明書を許可
+    rejectUnauthorized: false,
+    require: true  // ★明示的にTLS接続を要求
   }
 });
 
