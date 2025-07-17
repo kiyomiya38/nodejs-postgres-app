@@ -4,11 +4,11 @@ FROM registry.access.redhat.com/ubi9/nodejs-20:1-52
 WORKDIR /opt/app-root/src
 COPY . .
 
-# 依存関係をインストール（package.jsonに基づく）
+# 依存関係をインストール
 RUN npm install
 
-# ポート番号はOpenShiftの非rootポート（8080）
+# 非 root ポートでの公開
 EXPOSE 8080
 
 # 起動コマンド
-CMD ["npm", "start"]
+CMD ["node", "app.js"]
