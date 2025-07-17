@@ -10,10 +10,7 @@ const pool = new Pool({
   user: process.env.DB_USER || 'postgres',
   password: process.env.DB_PASSWORD || '',
   port: 5432,
-  ssl: {
-    rejectUnauthorized: false,
-    require: true  // ★明示的にTLS接続を要求
-  }
+  ssl: true 
 });
 
 app.get('/', async (req, res) => {
