@@ -10,7 +10,9 @@ const pool = new Pool({
   user: process.env.DB_USER || 'postgres',
   password: process.env.DB_PASSWORD || '',
   port: 5432,
-  ssl: true 
+  ssl: {
+    rejectUnauthorized: false
+  }
 });
 
 app.get('/', async (req, res) => {
