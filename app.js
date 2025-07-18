@@ -1,5 +1,7 @@
 const express = require('express');
 const { Pool } = require('pg');
+const fs = require('fs');
+const path = require('path');
 
 const app = express();
 const port = 8080;
@@ -11,8 +13,9 @@ const pool = new Pool({
   password: process.env.DB_PASSWORD || '',
   port: 5432,
   ssl: {
-    rejectUnauthorized: false
-    require: true
+    rejectUnauthorized: false,
+    require: true,
+    ca: fs.readFileSync(path.join(__dirname, 'certs', 'ca.crt')).toString()
   }
 });
 
